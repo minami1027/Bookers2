@@ -1,0 +1,46 @@
+<% if @booknew.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                 count: @booknew.errors.count,
+                 resource: @booknew.class.model_name.human.downcase)
+       %>
+    </h2>
+    <ul>
+      <% @booknew.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div class="container">
+   <div class="row">
+     <div class="col-lg-4">
+       <%= render 'users/list', user: @user, booknew: @booknew %>
+     </div>
+
+     <div class="col-lg-8">
+      <h2>Books</h2>
+<table class="table table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% @books.each do |book| %><tr>
+    <td><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg",size:'40x40' %></td>
+    <td><%=link_to book.title , book_path(book) %></td>
+      <td><%= book.body%></td></tr>
+   <% end %>
+  </tbody>
+</table>
+
+     </div>
+    </div>
+   </div>
