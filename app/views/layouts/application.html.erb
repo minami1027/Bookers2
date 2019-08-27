@@ -1,11 +1,6 @@
   <!DOCTYPE html>
 <html>
   <head>
-    <% if flash[:notice] %>
-  <div class="flash">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
@@ -16,7 +11,7 @@
   </head>
 
   <body>
-     <header class="navbar navbar-fixed-top navbar-inverse">
+     <header class="navbar navbar-inverse">
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
       <span>Bookers</span>
@@ -39,6 +34,11 @@
     </nav>
   </div>
 </header>
+        <% if flash[:notice] %>
+  <div class="flash">
+        <%= flash[:notice] %>
+  </div>
+<% end %>
     <%= yield %>
   </body>
 </html>
